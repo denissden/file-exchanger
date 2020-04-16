@@ -1,8 +1,5 @@
-from flask import make_response
-from simplexml import dumps
 from settings import *
 import string
-import zipfile
 from random import choices
 from data.files import Files
 import os
