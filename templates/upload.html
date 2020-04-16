@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link
+                href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+                rel="stylesheet">
+        <link rel="stylesheet" href="static/style.css">
+        <title>File Exchanger - бесплатный файлообменник</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <img src="static/img/logo.png", alt="logo">
+                <h4 class="logo">File Exchanger</h4>
+            </div>
+        </header>
+
+        <main>
+            <section class="presentation">
+                <div class="introduction">
+
+                    <div class="intro-text">
+                        <h1>File Exchanger</h1>
+                        <p>Send files to your friends</p>
+                    </div>
+
+                    <div class="cta">
+                        <label class="file">
+                            <input type="file" id="select-btn">
+                            <span class="file-custom"></span>
+                        </label>    
+
+                        <button class="cta-select" onclick="document.getElementById('select-btn').click();">
+                            Select Files
+                        </button>
+
+                        
+
+                        <button class="cta-cancel" id="cancel-btn">
+                            Cancel upload
+                        </button>
+
+                    </div>
+                    
+                    <div>
+                        <progress value="0" id="progress"><p></p></progress>
+                    </div>
+
+                </div>
+
+                <div id="filedrag" style="display: block;">
+                    or drop files here
+                </div>
+
+            </section>
+
+            <div id="download-url"></div>
+
+            <img class="circle-1" src="static/img/circle 1.png" alt="" />
+            <img class="circle-2" src="static/img/circle 2.png" alt="" />
+            <img class="circle-3" src="static/img/circle 3.png" alt="" />
+        </main>
+        <script src="static/upload.js"></script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+SQLALCHEMY_DATABASE_URI = "sqlite:///data/db.sqlite3"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+UPLOAD_FOLDER = 'data/files'
+NOT_ALLOWED_CHARACTERS = ["/", "\\"]
