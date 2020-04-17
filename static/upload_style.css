@@ -1,0 +1,283 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1.5rem;
+  font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+  color: #5a5a5a;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+button{
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type=radio] + label {
+    color: #ccc;
+    font-style: italic;
+  } 
+input[type=radio]:checked + label {
+    color: rgb(31, 31, 31);
+    font-style: normal;
+    font-weight: 800;
+} 
+
+
+.hidden{
+    display: none;
+}
+
+header {
+    display: flex;
+    width: 90%;
+    height: 10vh;
+    margin: auto;
+    align-items: center;
+}
+
+
+.logo-container,.nav-links,.cart {
+    display: flex;
+}
+
+
+.logo-container {
+    flex: 1;
+    align-items: center;
+}
+.logo {
+    font-weight: 400;
+    font-size: 30px;
+    margin: 5px;
+    animation: blur 3s ease;
+}
+.logo-container img{
+    height: 30px;
+    image-rendering: pixelated;
+    animation: blur 3s ease;
+}
+
+nav {
+    flex: 2;
+}
+.nav-links {
+    justify-content: space-around;
+    list-style: none;
+}
+.nav-link {
+    color: #55cc55;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.cart {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+
+.main-section {
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90vh;
+    align-items: center;
+}
+
+.about {
+    flex: 4;
+    margin-top: 15px;
+    width: 100%;
+    min-height: 70vh;
+    align-self: center;
+}
+
+.intro-text h1{
+    animation: drop 3s ease;
+    font-size: calc(18px + 3vmin);
+    font-weight: 700;
+    background: linear-gradient(to right, #496949, #6f896f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.intro-text p{
+    animation: drop 2.5s ease;
+    font-size: calc(6px + 2.5vmin);
+    font-weight: 500;
+}
+
+.expire-btn-box{
+    display: flex;
+    flex-direction: column;
+}
+.expire-btn-box label{
+    animation: drop 2s ease;
+    flex: 1;
+    font-size: calc(6px + 2.5vmin);
+    font-weight: 500;
+}
+
+
+.file{
+    display: none;
+}
+
+.cta {
+    padding: 50px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.cta-upload, .cta-cancel{
+    background: #c36cbb;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    color: white;
+}
+
+
+.download-progress{
+    flex:1;
+    width: 100%;
+}
+progress{
+    width: 100%;
+    height: 50px;
+	margin: 2px 0;
+    background-color: #eee;
+}
+#progress p
+{
+	display: block;
+	width: 240px;
+    border: 1px inset rgb(0, 0, 255);
+    background-color: #eee;
+}
+
+#filedrag
+{   
+    animation: drop 1.5s ease;
+    flex: 3;
+    border: 2px dashed rgb(97, 255, 48);
+    background: #1eff0065;
+    height: 30%;
+    min-height: 100px;
+    width: 100%;
+    cursor: pointer;
+    align-self: center;  
+}
+#filedrag-text{
+    font-size: calc(12px + 3vmin);
+    font-weight: 700;
+    background: linear-gradient(to right, #00b100, #166116);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-items: center;
+}
+#filedrag.hover
+{
+	flex: 3;
+    border: 2px dashed rgb(97, 255, 48);
+    background: #00000065;
+}
+
+.download-box{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+}
+#copy-btn{
+    border-radius: 3px;
+    background: #8a8a8a;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    color: rgb(29, 29, 29);
+}
+#copy-btn:hover{
+    background: #757575;
+    color: rgb(10, 10, 10);
+}
+.copy-img{
+    width: 50px;
+    height: 50px;
+}
+#download-url{
+    flex: 2;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 5px;
+    height: 100%;
+    animation: blur 3s ease;
+    text-decoration: none;
+    color: #5a5a5a;
+}
+#download-url:hover {
+    font-weight: 700;
+    color: #27382a;
+}
+
+.circle-1{
+    top: 0px;
+    right: 0px;
+    z-index: -1;
+    opacity: 0.7;
+    height: 40%;
+}
+.circle-2{
+    bottom: 20%;
+    left: 5%;
+    z-index: -1;
+    opacity: 0.7;
+    height: 30%;
+}
+.circle-3{
+    top: 10%;
+    left: 30%;
+    z-index: -1;
+    opacity: 0.7;
+    width: 50%;
+}
+.circle-1,.circle-2,.circle-3{
+    image-rendering: pixelated;
+    position: absolute;
+}
+
+
+
+@keyframes drop{
+    0%{
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(-80px);
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0px);
+    }
+}
+
+
+@keyframes blur{
+    0%{
+        opacity: 0;
+        filter: blur(10);
+    }
+    100%{
+        opacity: 1;
+        ffilter: blur(0);
+    }
+}

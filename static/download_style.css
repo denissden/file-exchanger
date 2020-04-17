@@ -1,0 +1,162 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1.5rem;
+  font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+  color: #5a5a5a;
+  font-family: 'Poppins', sans-serif;
+}
+header {
+    display: flex;
+    width: 90%;
+    height: 10vh;
+    margin: auto;
+    align-items: center;
+}
+.title{
+    font-size: 4vmax;
+    text-align: left;
+    animation: drop 2s ease;
+}
+button{
+    font-family: 'Poppins', sans-serif;
+}
+.hidden{
+    display: none;
+}
+
+
+.logo-container {
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    display: flex;
+}
+.logo {
+    font-weight: 400;
+    font-size: 30px;
+    margin: 5px;
+    animation: blur 3s ease;
+    text-decoration: none;
+    color: #5a5a5a;
+}
+.logo:hover {
+    font-weight: 700;
+    color: #27382a;
+}
+.logo-container img{
+    height: 32px;
+    image-rendering: pixelated;
+    animation: blur 3s ease;
+}
+
+.button-container{
+    flex: 1;
+    align-items: center;
+    height: 100%;
+}
+
+.download-btn{
+    animation: drop 1.5s ease;
+    flex: 3;
+    border: 2px dashed rgb(97, 255, 48);
+    background: #1eff0065;
+    height: 100%;
+    min-height: 100px;
+    width: 100%;
+    cursor: pointer;
+    align-self: center;   
+}
+.download-btn-text{
+    font-size: calc(12px + 3vmin);
+    font-weight: 700;
+    background: linear-gradient(to right, #00b100, #166116);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.download-btn:hover{
+    border: 2px dashed rgb(48, 204, 0);
+    background: #209c1065; 
+}
+.download-btn:hover > .download-btn-text{
+    background: linear-gradient(to right, #003300, #003f00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.file-box{
+    margin-top: 15px;
+    width: 100%;
+    align-self: center;
+    background-color: rgb(245, 245, 245);
+    animation: drop 1s ease;
+}
+
+.file-name{
+    color: rgb(32, 32, 32);
+    background-color: rgb(226, 226, 226);
+}
+.file-info{
+    padding-left: 10px;
+}
+
+.date-box{
+    margin-top: 15px;
+    width: 100%;
+    align-self: center;
+    background-color: rgb(212, 150, 150);
+    animation: drop 0.7s ease;
+}
+.upload-date{
+    color: rgb(32, 32, 32);
+    background-color: rgb(172, 115, 115);
+}
+.expiration-date{
+    color: rgb(68, 68, 68)
+}
+
+.main-section{
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90vh;
+    align-items: center;
+}
+
+
+@keyframes drop{
+    0%{
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes blur{
+    0%{
+        opacity: 0;
+        filter: blur(10);
+    }
+    100%{
+        opacity: 1;
+        ffilter: blur(0);
+    }
+}
+
+@for $i from 1 through 10 {
+    .main-section .file-box:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.5}s;
+    }
+}

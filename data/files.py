@@ -1,7 +1,5 @@
-import string
 import datetime
 import sqlalchemy
-from random import choices
 from .db_session import SqlAlchemyBase, create_session
 
 
@@ -14,4 +12,6 @@ class Files(SqlAlchemyBase):
                               index=True, unique=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
+    expiration_date = sqlalchemy.Column(sqlalchemy.DateTime)
 
+    downloads = sqlalchemy.Column(sqlalchemy.Integer, default=0)
