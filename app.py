@@ -120,5 +120,4 @@ def download_file(download_url, file_name):
 
 
 if __name__ == '__main__':
-    schedule_cleanup(1)
     app.run()
