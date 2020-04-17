@@ -1,3 +1,5 @@
+	var MAX_SIZE = 512 * 1024 * 1024
+	
 	// getElementById
 	function $id(id) {
 		return document.getElementById(id);
@@ -46,7 +48,7 @@
       	var progress = $id("progress");
 		var cancel_btn = $id("cancel-btn");
 		var copy_btn = $id("copy-btn");
-		var draq_box_text = $id("filedrag-text")
+		var drag_box_text = $id("filedrag-text")
 		
 		var expiration_buttons = $name("expire");
 		var expiration_id = "0";
@@ -60,17 +62,17 @@
 				console.log(e.loaded, e.total);
 				progress.value = pc;
 				text = Math.round(pc * 100) + "% uploaded"
-				draq_box_text.innerHTML = text
+				drag_box_text.innerHTML = text
 
 				if (pc == 1) { 
 					cancel_btn.style = "display: none;";
-					draq_box_text.innerHTML = "Processing your files"
+					drag_box_text.innerHTML = "Processing your files"
 				 }
 
 			}, false);
 
 		cancel_btn.addEventListener("click", function(e){
-			draq_box_text.innerHTML = "Upload canceled"
+			drag_box_text.innerHTML = "Upload canceled"
 			xhr.abort();
 		}, false)
 
@@ -94,27 +96,40 @@
 		
 		xhr.onload = function () {
 			if (xhr.status == 200) {
-				draq_box_text.innerHTML = "Download link is below";
+				drag_box_text.innerHTML = "Download link is below";
 				filedrag.removeEventListener("dragover", FileDragHover, false);
 				filedrag.removeEventListener("dragleave", FileDragHover, false);
 				filedrag.removeEventListener("drop", FileSelectHandler, false);
 				fileselect.removeEventListener("change", FileSelectHandler, false);
 				$id("hidden-input").innerHTML = '<span class="file-custom"></span>'
 			} 
-			else {
-				draq_box_text.innerHTML = "Couldn't upload files";
-			}
 
 			const link = $id("download-url");
 			copy_btn.style = ""
 			progress.style = "display: none;"
 			link.innerHTML = this.response;
 			link.href = this.response;
+			console.log(xhr.status)
 		};
 
-		xhr.open("POST", '', true);
-		xhr.send(formData);
-		console.log("sent")
+		var size = 0;
+		for(var pair of formData.entries()) {
+			if (pair[1] instanceof Blob) 
+			size += pair[1].size;
+			else
+			size += pair[1].length;
+		}
+		
+		if (size <= MAX_SIZE){
+			xhr.open("POST", '', true);
+			xhr.send(formData);
+		}
+		else {
+			progress.style = "display: none;"
+			cancel_btn.style = "display: none;";
+			drag_box_text.innerHTML = "Files are too large. Choose something smaller";
+		}
+		
 
 
 	}
