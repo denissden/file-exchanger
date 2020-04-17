@@ -42,7 +42,7 @@ def upload_page():
         s.commit()
 
         path = P(os.path.join(app.config['UPLOAD_FOLDER'], link))
-        os.mkdir(path)
+        os.makedirs(path)
         for index in files_list:
             file = request.files[index]
             filename = secure_filename(file.filename)
