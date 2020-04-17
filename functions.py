@@ -9,6 +9,7 @@ import shutil
 import logging
 from threading import Timer
 
+P = os.path.abspath
 
 def readable_size(size):
     v = ["B", "KB", "MB", "GB"]
@@ -53,8 +54,8 @@ def cleanup():
     s = db_session.create_session()
     expired = s.execute(f'SELECT link FROM files WHERE (expiration_date < "{now}")')
     for element in expired:
-        path = os.path.join(UPLOAD_FOLDER, element[0])
-        zip_path = os.path.join(ZIPS_FOLDER, element[0]) + ".zip"
+        path = P(os.path.join(UPLOAD_FOLDER, element[0]))
+        zip_path = P(os.path.join(ZIPS_FOLDER, element[0]) + ".zip")
         if os.path.exists(path):
             shutil.rmtree(path)
             removed_count += 1

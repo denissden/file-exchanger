@@ -10,10 +10,11 @@ from data import files
 from functions import *
 from apscheduler.schedulers.background import BackgroundScheduler
 
+P = os.path.abspath
 
 app = Flask(__name__)
-app.config.from_pyfile("settings.py")
-db_session.global_init("db/files.sqlite")
+app.config.from_pyfile(P("settings.py"))
+db_session.global_init(P("db/files.sqlite"))
 
 #schedule cleanup
 scheduler = BackgroundScheduler()
@@ -40,7 +41,7 @@ def upload_page():
         s.add(obj)
         s.commit()
 
-        path = os.path.join(app.config['UPLOAD_FOLDER'], link)
+        path = P(os.path.join(app.config['UPLOAD_FOLDER'], link))
         os.mkdir(path)
         for index in files_list:
             file = request.files[index]
@@ -62,7 +63,7 @@ def upload_page():
 
 @app.route('/<download_url>')
 def download_page(download_url):
-    path = os.path.join(app.config['UPLOAD_FOLDER'], download_url)
+    path = P(os.path.join(app.config['UPLOAD_FOLDER'], download_url))
     if not os.path.exists(path):
         abort(404)
 
@@ -87,7 +88,7 @@ def download_page(download_url):
 
 @app.route('/<download_url>/download/')
 def download(download_url):
-    path = os.path.join(app.config['UPLOAD_FOLDER'], download_url);
+    path = P(os.path.join(app.config['UPLOAD_FOLDER'], download_url));
     if not os.path.exists(path):
         abort(404)
 
@@ -102,7 +103,7 @@ def download(download_url):
 
         return send_file(file, attachment_filename=name, as_attachment=True)
     else:
-        zip_file = os.path.join(ZIPS_FOLDER, download_url) + ".zip"
+        zip_file = P(os.path.join(ZIPS_FOLDER, download_url) + ".zip")
 
         print("download", zip_file)
         inc_downloads(download_url)
@@ -112,7 +113,7 @@ def download(download_url):
 
 @app.route('/<download_url>/download/<file_name>')
 def download_file(download_url, file_name):
-    file = os.path.join(app.config['UPLOAD_FOLDER'], download_url, file_name);
+    file = P(os.path.join(app.config['UPLOAD_FOLDER'], download_url, file_name))
     print("download", file)
     if os.path.exists(file):
         inc_downloads(download_url)
