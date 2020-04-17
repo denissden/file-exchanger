@@ -98,6 +98,8 @@
 				filedrag.removeEventListener("dragover", FileDragHover, false);
 				filedrag.removeEventListener("dragleave", FileDragHover, false);
 				filedrag.removeEventListener("drop", FileSelectHandler, false);
+				fileselect.removeEventListener("change", FileSelectHandler, false);
+				$id("hidden-input").innerHTML = '<span class="file-custom"></span>'
 			} 
 			else {
 				draq_box_text.innerHTML = "Couldn't upload files";
@@ -112,7 +114,7 @@
 
 		xhr.open("POST", '', true);
 		xhr.send(formData);
-
+		console.log("sent")
 
 
 	}
