@@ -7,7 +7,7 @@
         <link
                 href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
                 rel="stylesheet">
-        <link rel="stylesheet" href="static/style.css">
+        <link rel="stylesheet" href="static/upload_style.css">
         <title>File Exchanger - бесплатный файлообменник</title>
     </head>
     <body>
@@ -19,45 +19,53 @@
         </header>
 
         <main>
-            <section class="presentation">
-                <div class="introduction">
+            <section class="main-section">
+                <div class="about">
 
                     <div class="intro-text">
-                        <h1>File Exchanger</h1>
-                        <p>Send files to your friends</p>
+                        <h1>Send files easy and fast</h1>
+                        <p>Choose how long you want your files to be available for download</p>
                     </div>
 
-                    <div class="cta">
-                        <label class="file">
-                            <input type="file" id="select-btn">
-                            <span class="file-custom"></span>
-                        </label>    
+                    <label class="file hidden">
+                        <input type="file" id="select-btn" multiple>
+                        <span class="file-custom"></span>
+                    </label>                     
 
-                        <button class="cta-select" onclick="document.getElementById('select-btn').click();">
-                            Select Files
-                        </button>
-
+                    <div class="expire-btn-box">
                         
-
-                        <button class="cta-cancel" id="cancel-btn">
-                            Cancel upload
-                        </button>
-
+                        <input type="radio" id="expire-0" name="expire" value="0" class="hidden" checked>
+                        <label for="expire-0">12 hours</label>
+                        <input type="radio" id="expire-1" name="expire" value="1" class="hidden">
+                        <label for="expire-1">1 day</label>
+                        <input type="radio" id="expire-2" name="expire" value="2" class="hidden">
+                        <label for="expire-2">1 week</label>
                     </div>
+
+                    <button id="filedrag" onclick="document.getElementById('select-btn').click()">
+                        <b id="filedrag-text">Click to select files or drag them here</b>
+                    </button>
+
+                    <div class="download-progress">
+                        <progress value="0" id="progress" style="display: none;"><p></p></progress>
+                    </div>
+
+                    <button class="cta-cancel" id="cancel-btn", style="display: none;">
+                        Cancel upload
+                    </button>
                     
-                    <div>
-                        <progress value="0" id="progress"><p></p></progress>
+                    <div class="download-box">
+                        <button id="copy-btn" onclick="CopyToClipboard()" style="display: none;">
+                            <img src="static/img/clipboard.png" alt="copy-btn" class="copy-img">
+                        </button>
+                        <a id="download-url"></a>
                     </div>
-
                 </div>
 
-                <div id="filedrag" style="display: block;">
-                    or drop files here
-                </div>
+                
 
             </section>
 
-            <div id="download-url"></div>
 
             <img class="circle-1" src="static/img/circle 1.png" alt="" />
             <img class="circle-2" src="static/img/circle 2.png" alt="" />

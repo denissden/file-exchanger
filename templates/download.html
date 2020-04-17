@@ -7,12 +7,53 @@
         <link
                 href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
                 rel="stylesheet">
-        <link rel="stylesheet" href="static/style.css">
-        <title>File Exchanger - бесплатный файлообменник</title>
+        <link rel="stylesheet" href="static/download_style.css">
+        <title>Скачать файлы - File Exchanger - бесплатный файлообменник</title>
     </head>
 
     <body>
-        <a href="{{ url_for('download', download_url=download_url) }}" download="file">Download</a>
+        <main>
+           
+            <header>
+                <div class="logo-container">
+                    <img src="static/img/logo.png", alt="logo">
+                    <a href="/" class="logo">File Exchanger</a>
+                </div>
+                <div class="button-container">
+                    <a href="{{ url_for('download', download_url=download_url) }}" download="file" id="download_all" class="hidden">Download</a>
+                    
+                </div>
+            </header>
+            
+            <section class="main-section">
+                <div>
+                    <h4 class="title">
+                        Click to download following files:
+                    </h4>
+                </div>
+
+                <button class="download-btn" onclick="document.getElementById('download_all').click()">
+                                    <b class="download-btn-text">Download</b>
+                </button>
+
+                {% for file in files %}
+                <div class="file-box">
+                    <h2 class="file-name file-info">{{file["name"]}}</h2>
+                    <b class="file-info">{{file["size"]}}</b>
+                </div>
+                {% endfor %}
+
+                <div class="date-box">
+                    <h2 class="upload-date">
+                        Upload date: {{upload_date}}
+                    </h2>
+                    <b class="expiration-date">
+                        You can download files until {{expiration_date}}
+                    </b>
+                </div>
+            </section>
+
+        </main>
     </body>
 
 
