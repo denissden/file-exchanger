@@ -77,7 +77,7 @@ def download_page(download_url):
         print(file_data)
 
     s = db_session.create_session()
-    dates = s.execute(f'SELECT created_date, expiration_date FROM files WHERE (link == "{download_url}")').next()
+    dates = s.execute(f'SELECT created_date, expiration_date FROM files WHERE (link == "{download_url}")').fetchone()
     print(dates)
     return render_template("download.html",
                            download_url=download_url,

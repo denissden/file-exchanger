@@ -78,7 +78,7 @@ def inc_downloads(link):
 
 def get_dates(link):
     s = db_session.create_session()
-    dates = s.execute(f'SELECT created_date, expiration_date FROM files WHERE (link == "{link}")').next()
+    dates = s.execute(f'SELECT created_date, expiration_date FROM files WHERE (link == "{link}")').fetchone()
     u = dates[0][:16]
     e = dates[1][:16]
     return {"upload_date": u,
